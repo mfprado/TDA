@@ -20,6 +20,14 @@ def diezSets():
 		sets.append(lista)
 	return sets
 	
+def promedio (lista):
+	suma = 0
+	for i in lista:
+		
+		for j in i:
+			suma += j[0]
+	return suma/len(lista)
+
 def main():
 	sets = diezSets()
 	cantidad = [50, 100, 500, 1000, 2000, 3000, 4000, 5000, 7500, 10000]
@@ -34,26 +42,30 @@ def main():
 			Quicksort(nuevoSet,0, i)
 			tiempoFin=time()
 			tiemposDeCantidad.append(tiempoFin-tiempoIni)
-
+			
+			nuevoSet = set[0:i]
 			tiempoIni=time()
 			Seleccion(nuevoSet, i)
 			tiempoFin=time()
 			tiemposDeCantidad.append(tiempoFin-tiempoIni)
-
+			
+			nuevoSet = set[0:i]
 			tiempoIni=time()
 			Insercion (nuevoSet)
 			tiempoFin=time()
 			tiemposDeCantidad.append(tiempoFin-tiempoIni)
 
+			nuevoSet = set[0:i]
 			tiempoIni=time()
 			Heapsort(nuevoSet)
 			tiempoFin=time()
 			tiemposDeCantidad.append(tiempoFin-tiempoIni)
 
+			nuevoSet = set[0:i]
 			tiempoIni=time()
 			Mergesort(nuevoSet)
 			tiempoFin=time()
-			tiemposDeCantidad.append(tiempoFin-tiempoIni)			
+			tiemposDeCantidad.append(tiempoFin-tiempoIni)
 
 			tiemposDelSet.append(tiemposDeCantidad)
 		tiempos.append(tiemposDelSet)
