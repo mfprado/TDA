@@ -91,12 +91,25 @@ def ordenarSets(sets):
 def main():
 	sets = diezSets()
 	tiempoDiezSets = ordenarSets(sets)
-	#tiempoDiezSets = [[[Q,S,I,H,M],[],[],[],[],[],[],[],[],[]],  [],  [],  [],  [],  [],  [],  [],  [],  []]
+	#tiempoDiezSets = [[[Q,S,I,H,M],[Q,S,I,H,M],[],[],[],[],[],[],[],[]],  [],  [],  [],  [],  [],  [],  [],  [],  []]
 	#tiempoDiezSets = [[[50 de largo],[largo 100],[largo 500],[largo 1000],[largo 2000],[largo 3000],...,[largo 10000]],  [],...,   []]
 
 	sets = [setOrdenado(),setDesordenado(), setNrosIguales()]
 	tiempoPeoresCasos = ordenarSets(sets)
 
-	#ACA HABRIA QUE GRAFICAR
+#Para graficar en Jupyter seria algo asi:
+'''import matplotlib.pyplot as plot
+longitudes = [50, 100, 500, 1000, 2000, 3000, 4000, 5000, 7500, 10000]
+algoritmos = ["QuickSort", "Seleccion", "Insercion", "HeapSort", "MergeSort"] #titulos que habria que ponerle a cada subplot
+for set_lista in tiemposSets:
+	tiempos_juntados_por_algoritmo = zip(set_lista[0],set_lista[1],set_lista[2],set_lista[3],set_lista[4],set_lista[5],set_lista[6],set_lista[7],set_lista[8],set_lista[9])
+	plot.figure()
+	i=1
+	color = ['r', 'g', 'b', 'k', 'y']
+	for algoritmo in tiempos_juntados_por_algoritmo:
+		plot.subplot(2,2,i)
+		plot.plot(longitudes, algoritmo,color[i-1])
+		i++
+	plot.show()'''
 
 main()
