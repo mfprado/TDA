@@ -29,15 +29,7 @@ def promedio (lista):
 	return suma/len(lista)
 
 def setOrdenado():
-	lista=[]
-	for x in range(0,10000):
-		lista.append(x)
-	return lista
-
-def setDesordenado():
-	lista=[]
-	for x in range(10000,0):
-		lista.append(x)
+	lista=list(range(10000))
 	return lista
 
 def setNrosIguales():
@@ -55,12 +47,12 @@ def ordenarSets(sets):
 			tiemposDeCantidad = []
 			nuevoSet = seti[0:i]
 			
-			tiempoIni=time()
+			'''tiempoIni=time()
 			Quicksort(nuevoSet,0, i)
 			tiempoFin=time()
 			tiemposDeCantidad.append(tiempoFin-tiempoIni)
 			
-			nuevoSet = seti[0:i]
+			nuevoSet = seti[0:i]'''
 			tiempoIni=time()
 			Seleccion(nuevoSet, i)
 			tiempoFin=time()
@@ -91,10 +83,11 @@ def ordenarSets(sets):
 def main():
 	sets = diezSets()
 	tiempoDiezSets = ordenarSets(sets)
+	print "termino los 10 sets"
 	#tiempoDiezSets = [[[Q,S,I,H,M],[Q,S,I,H,M],[],[],[],[],[],[],[],[]],  [],  [],  [],  [],  [],  [],  [],  [],  []]
 	#tiempoDiezSets = [[[50 de largo],[largo 100],[largo 500],[largo 1000],[largo 2000],[largo 3000],...,[largo 10000]],  [],...,   []]
-
-	sets = [setOrdenado(),setDesordenado(), setNrosIguales()]
+	ordenado =setOrdenado()
+	sets = [ordenado, ordenado[::-1], setNrosIguales()]
 	tiempoPeoresCasos = ordenarSets(sets)
 
 #Para graficar en Jupyter seria algo asi:
@@ -113,3 +106,4 @@ for set_lista in tiemposSets:
 	plot.show()'''
 
 main()
+#setDesordenado()
