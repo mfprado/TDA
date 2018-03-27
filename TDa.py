@@ -28,40 +28,57 @@ def promedio (lista):
 			suma += j[0]
 	return suma/len(lista)
 
-def main():
-	sets = diezSets()
+def setOrdenado():
+	lista=[]
+	for x in range(0,10000):
+		lista.append(x)
+	return lista
+
+def setDesordenado():
+	lista=[]
+	for x in range(10000,0):
+		lista.append(x)
+	return lista
+
+def setNrosIguales():
+	lista=[]
+	for x in range(0,10000):
+		lista.append(1)
+	return lista
+
+def ordenarSets(sets):
 	cantidad = [50, 100, 500, 1000, 2000, 3000, 4000, 5000, 7500, 10000]
 	tiempos = []
-	for set in sets:
+	for seti in sets:
 		tiemposDelSet = []
 		for i in cantidad:
 			tiemposDeCantidad = []
-			nuevoSet = set[0:i]
+			nuevoSet = seti[0:i]
 			
 			tiempoIni=time()
 			Quicksort(nuevoSet,0, i)
 			tiempoFin=time()
 			tiemposDeCantidad.append(tiempoFin-tiempoIni)
 			
-			nuevoSet = set[0:i]
+			nuevoSet = seti[0:i]
 			tiempoIni=time()
 			Seleccion(nuevoSet, i)
 			tiempoFin=time()
 			tiemposDeCantidad.append(tiempoFin-tiempoIni)
 			
-			nuevoSet = set[0:i]
+			nuevoSet = seti[0:i]
 			tiempoIni=time()
 			Insercion (nuevoSet)
 			tiempoFin=time()
 			tiemposDeCantidad.append(tiempoFin-tiempoIni)
 
-			nuevoSet = set[0:i]
+			nuevoSet = seti[0:i]
 			tiempoIni=time()
 			Heapsort(nuevoSet)
 			tiempoFin=time()
 			tiemposDeCantidad.append(tiempoFin-tiempoIni)
 
-			nuevoSet = set[0:i]
+			nuevoSet = seti[0:i]
 			tiempoIni=time()
 			Mergesort(nuevoSet)
 			tiempoFin=time()
@@ -69,7 +86,17 @@ def main():
 
 			tiemposDelSet.append(tiemposDeCantidad)
 		tiempos.append(tiemposDelSet)
-	print len(tiempos)
 	return tiempos
+
+def main():
+	sets = diezSets()
+	tiempoDiezSets = ordenarSets(sets)
+	#tiempoDiezSets = [[[Q,S,I,H,M],[],[],[],[],[],[],[],[],[]],  [],  [],  [],  [],  [],  [],  [],  [],  []]
+	#tiempoDiezSets = [[[50 de largo],[largo 100],[largo 500],[largo 1000],[largo 2000],[largo 3000],...,[largo 10000]],  [],...,   []]
+
+	sets = [setOrdenado(),setDesordenado(), setNrosIguales()]
+	tiempoPeoresCasos = ordenarSets(sets)
+
+	#ACA HABRIA QUE GRAFICAR
 
 main()
