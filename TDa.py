@@ -126,5 +126,3 @@ for set_lista in tiemposSets:
 
 main()
 #setDesordenado()
-
-#20:35:07 ////20:48:07////20:
