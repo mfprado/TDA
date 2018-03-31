@@ -28,15 +28,15 @@ def promedio (lista):
 	k = 0
 	cont = 0
 	suma = 0
-	while cont < len(listas)*len(listas[0])*len(listas[0][0]):
-		if k == len(listas[i][j]) :
+	while cont < len(lista)*len(lista[0])*len(lista[0][0]):
+		if k == len(lista[i][j]) :
 			j += 1
 			k = 0
 			promedios.append(prom_aux)
 			prom_aux = []
-		suma += listas[i][j][k]
+		suma += lista[i][j][k]
 		i +=1
-		if i == len(listas):
+		if i == len(lista):
 			prom_aux.append(suma)
 			i = 0
 			k +=1
