@@ -21,12 +21,30 @@ def diezSets():
 	return sets
 	
 def promedio (lista):
+	promedios = []
+	prom_aux = []
+	i = 0
+	j = 0
+	k = 0
+	cont = 0
 	suma = 0
-	for i in lista:
+	while cont < len(listas)*len(listas[0])*len(listas[0][0]):
+		if k == len(listas[i][j]) :
+			j += 1
+			k = 0
+			promedios.append(prom_aux)
+			prom_aux = []
+		suma += listas[i][j][k]
+		i +=1
+		if i == len(listas):
+			prom_aux.append(suma)
+			i = 0
+			k +=1
+			suma = 0
+		cont+=1
+	promedios.append(prom_aux)
 		
-		for j in i:
-			suma += j[0]
-	return suma/len(lista)
+	return promedios 
 
 def setOrdenado():
 	lista=list(range(10000))
@@ -44,6 +62,7 @@ def ordenarSets(sets):
 	for seti in sets:
 		tiemposDelSet = []
 		for i in cantidad:
+			#print i
 			tiemposDeCantidad = []
 			nuevoSet = seti[0:i]
 			
@@ -107,3 +126,5 @@ for set_lista in tiemposSets:
 
 main()
 #setDesordenado()
+
+#20:35:07 ////20:48:07////20:
