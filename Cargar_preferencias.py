@@ -31,8 +31,8 @@ def cargar_preferencias(ruta):
 
 
 def main():
-	pref_jugadores = cargar_preferencias("./Archivos Jugadores")
-	pref_equipos = cargar_preferencias("./Archivos equipos")
+	pref_jugadores = cargar_preferencias("./Jugadores")
+	pref_equipos = cargar_preferencias("./Equipos")
 	print pref_jugadores
 	print
 	print pref_equipos
