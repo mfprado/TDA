@@ -11,7 +11,7 @@ def obtener_nro(cadena):
 	return cadena_aux
 
 def cargar_preferencias(ruta):
-	dicc_prefe ={}
+	lista_prefe = []
 	for arch in listdir(ruta):
 		cadena = ruta +"/" + str(arch)
 		if arch == ".DS_Store":
@@ -20,21 +20,20 @@ def cargar_preferencias(ruta):
 			with open(cadena) as preferencias:
 				preferencias_csv = csv.reader(preferencias)
 				prefe = int(obtener_nro(arch))
-				dicc_prefe[prefe] = []
+				lista = []
 				for pre in preferencias_csv:
 					if pre[0].isdigit():
 						pref = pre[0]
-						dicc_prefe[prefe].append(int(pref))
+						lista.append(int(pref))
+				lista_prefe.append((prefe,lista))
+				
 		except IOError:
 			raise IOError("No se encuntra el archivo")
-	return dicc_prefe
+	return lista_prefe
 
 
-def main():
+def obtener_preferencias():
 	pref_jugadores = cargar_preferencias("./Jugadores")
 	pref_equipos = cargar_preferencias("./Equipos")
-	print pref_jugadores
-	print
-	print pref_equipos
+	return pref_jugadores, pref_equipos
 
-main()
