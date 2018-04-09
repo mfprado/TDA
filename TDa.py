@@ -54,7 +54,7 @@ def calcular_promedios_csv():
 	k = 0
 	cont = 0
 	suma = 0
-	archivo = open("tiempos_algoritmos.csv","w")
+	archivo = open("tiempos_algoritmos_promedio.csv","w")
 	archivo_csv = csv.writer(archivo)
 	for lista in listas:
 		for tiempo in listas:
