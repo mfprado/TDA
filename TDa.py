@@ -8,6 +8,8 @@ from seleccion import Seleccion
 from merge import Mergesort
 
 import random
+import csv
+import sys
 from time import time
 INF = 9999999
 
@@ -43,8 +45,21 @@ def promedio (lista):
 			suma = 0
 		cont+=1
 	promedios.append(prom_aux)
-		
 	return promedios 
+
+def calcular_promedios_csv():
+	tiempos = []
+	i = 0
+	j = 0
+	k = 0
+	cont = 0
+	suma = 0
+	archivo = open("tiempos_algoritmos.csv","w")
+	archivo_csv = csv.writer(archivo)
+	for lista in listas:
+		for tiempo in listas:
+			for tiem in tiempo:
+				archivo_csv.writerow(tiem)
 
 def setOrdenado():
 	lista=list(range(10000))
@@ -62,16 +77,16 @@ def ordenarSets(sets):
 	for seti in sets:
 		tiemposDelSet = []
 		for i in cantidad:
-			#print i
+			print i
 			tiemposDeCantidad = []
 			nuevoSet = seti[0:i]
 			
-			'''tiempoIni=time()
+			tiempoIni=time()
 			Quicksort(nuevoSet,0, i)
 			tiempoFin=time()
 			tiemposDeCantidad.append(tiempoFin-tiempoIni)
 			
-			nuevoSet = seti[0:i]'''
+			nuevoSet = seti[0:i]
 			tiempoIni=time()
 			Seleccion(nuevoSet, i)
 			tiempoFin=time()
@@ -99,15 +114,61 @@ def ordenarSets(sets):
 		tiempos.append(tiemposDelSet)
 	return tiempos
 
+def pasar_valores(listas,nombre_archivo):
+	tiempos = []
+	i = 0
+	j = 0
+	k = 0
+	cont = 0
+	suma = 0
+	archivo = open(nombre_archivo + ".csv","w")
+	archivo_csv = csv.writer(archivo)
+	while cont < len(listas)*len(listas[0])*len(listas[0][0]):
+		if k == len(listas[i][j]) :
+			j += 1
+			k = 0
+
+		tiempos.append(listas[i][j][k])
+		i +=1
+		if i == len(listas):
+			archivo_csv.writerow(tiempos)
+			i = 0
+			k +=1
+			tiempos = []
+		cont+=1
+	tiempos.append(tiempos)
+	
+def pasar_valores2(listas,nombre_archivo):
+	archivo = open(nombre_archivo+".csv","w")
+	archivo_csv = csv.writer(archivo)
+	for lista in listas:
+		for tiempo in listas:
+			for tiem in tiempo:
+				archivo_csv.writerow(tiem)
+				
+def pasar_valores3(listas):
+	archivo = open("tiempos_algoritmos_promedio.csv","w")
+	archivo_csv = csv.writer(archivo)
+	for tiempo in listas:
+		archivo_csv.writerow(tiempo)
+
+
 def main():
 	sets = diezSets()
 	tiempoDiezSets = ordenarSets(sets)
+	pasar_valores(tiempoDiezSets,"tiempos_algoritmos")
+	pasar_valores2(tiempoDiezSets,"tiempos_algoritmos_2")
+	promedios = promedio(lista)
+	pasar_valores2(promedios)
+	
 	print "termino los 10 sets"
 	#tiempoDiezSets = [[[Q,S,I,H,M],[Q,S,I,H,M],[],[],[],[],[],[],[],[]],  [],  [],  [],  [],  [],  [],  [],  [],  []]
 	#tiempoDiezSets = [[[50 de largo],[largo 100],[largo 500],[largo 1000],[largo 2000],[largo 3000],...,[largo 10000]],  [],...,   []]
-	ordenado =setOrdenado()
+	ordenado = setOrdenado()
 	sets = [ordenado, ordenado[::-1], setNrosIguales()]
+	sys.setrecursionlimit(INF)
 	tiempoPeoresCasos = ordenarSets(sets)
+	pasar_valores2(tiempoPeoresCasos,"tiempos_algoritmos_peores_casos")
 
 #Para graficar en Jupyter seria algo asi:
 '''import matplotlib.pyplot as plot
