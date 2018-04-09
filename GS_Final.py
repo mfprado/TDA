@@ -36,6 +36,7 @@ def Gale_Shapley(jugadores,equipos):
 							empleado = True
 							break
 				if empleado: break
+	print s
 	for contrato in s:
 		print str(contrato[0][0]) + " " + str(contrato[1][0])
 	return vacantes
