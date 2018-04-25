@@ -1,10 +1,10 @@
 def esRotacionCiclicaFB(s1, s2) :
     rotacionPrevia = s2
-    largo = len(s2) - 1
+    ultimoIndice = len(s2) - 1
     for i in range(0,len(s2)) :
-        if s1 == (rotacionPrevia[largo] + rotacionPrevia[0 : largo]) :
+        if s1 == rotacionPrevia :
             return True
-        rotacionPrevia = (rotacionPrevia[largo] + rotacionPrevia[0 : largo])
+        rotacionPrevia = (rotacionPrevia[ultimoIndice] + rotacionPrevia[0 : ultimoIndice])
     return False
 
 
