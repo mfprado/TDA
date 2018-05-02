@@ -23,7 +23,7 @@ def KMP(pattern, text):
         print (k, i)
         if text[k + i] == pattern[i]:
             i = i + 1
-            if k == len(pattern):
+            if i == len(pattern):
                 return k
         else:
             if i == 0:
@@ -34,4 +34,5 @@ def KMP(pattern, text):
     return None
 
 
-print(KMP('ABRACADABRA','ABRACADAPA ABRACADABRA'))
+print(KMP('ABRACADABRA','DABRAABRACADABRAABRACA'))
+print(KMP('DABRAABRACA','ABRACADABRAABRACADABRA'))
