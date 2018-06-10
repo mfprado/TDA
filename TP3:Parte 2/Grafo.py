@@ -4,22 +4,31 @@ from heapq import heappush, heappop
 class Grafo (object):
 	
 	def __init__(self):
-		self.vertices_residual = {}
-		self.vertices_completo = {}
+		self.vertices_simil_residual = {} #grafo simil residual = grafo residual sin las aristas originales
+		self.vertices_completo = {} #grafo resifual
 	
 	def agregar_arista(self,vertice_1,vertice_2,peso = 0):
+		'''Se agrega al grafo completo la arista que une al vertice_1 con el vertice_2, 
+		la cual tendra peso 'peso'.
+		Se agrega al grafo simil residual y al completo la arista que une al vertice_2 
+		con el vertice_1, la cual tendra peso cero.
+		'''
 		if not vertice_1 in self.vertices_completo:
-			self.vertices_residual[vertice_1] = {}
+			self.vertices_simil_residual[vertice_1] = {}
 			self.vertices_completo[vertice_1] = {}
 		if not vertice_2 in self.vertices_completo:
-			self.vertices_residual[vertice_2] = {}
+			self.vertices_simil_residual[vertice_2] = {}
 			self.vertices_completo[vertice_2] = {}
 
-		self.vertices_completo[vertice_1][vertice_2] = peso
+		self.vertices_completo[vertice_1][vertice_2] = int(peso)
 		self.vertices_completo[vertice_2][vertice_1] = 0
-		self.vertices_residual[vertice_2][vertice_1] = 0
+		self.vertices_simil_residual[vertice_2][vertice_1] = 0
 		
 	def camino_minimo(self,origen = '0',destino = '1'):
+		'''Devuelde una lista con el seguimiento del camino minimo entre origen y destino.
+		Tambien devuelve una lista con los pesos de las aristas recorridas, estos pesos no se devuelven
+		en el orden de recorrido necesariamente'''
+
 		"""if destino!= None:
 			if not origen in self.vertices or not destino in self.vertices:
 				raise KeyError()"""
@@ -46,6 +55,9 @@ class Grafo (object):
 		return self.reconstruir_camino(vuelta, origen, destino)
 		
 	def reconstruir_camino(self, vuelta, origen, destino):
+		'''Devuelde una lista con el seguimiento del camino entre origen y destino.
+		Tambien devuelve una lista con los pesos de las aristas recorridas, estos pesos no se devuelven
+		en el orden de recorrido, sino en sentido contrario'''
 		if not destino in vuelta:
 			return None,0
 		camino = []
@@ -62,13 +74,25 @@ class Grafo (object):
 		return camino,pesos
 		
 	def imprimir_grafo(self):
-		print self.vertices_residual	
+		'''Imprime el grafo simil residual, el cual es como el grafo residual sin las aristas originales (vertices_simil_residual), 
+		que se expresa en forma de diccionario:
+			vertices_simil_residual={vertice_1:{vertice_2:'peso1a2', vertice_5:'peso1a5'}, vertice_3:{vertice_4:'peso3a4'},...}
+		Imprime el grafo residual (vertices_completo), que se expresa en forma de diccionario como el grafo simi residual'''
+		print self.vertices_simil_residual	
 		print self.vertices_completo
 		
 	def Ford(self, origen, destino):
-		camino,pesos = self.camino_minimo('s','t')
-		
+		'''Recibe por parametro la fuente (origen) y el sumidero (destino).
+		Se aplica el algoritmo Ford Fulkerson al grafo, luego se devuelve el flujo maximo del grafo
+		y las dos aristas con mayor flujo'''
+		camino,pesos = self.camino_minimo('0','1')
+		flujo_maximo = 0
 		while camino != None:
+			#guardamos el flujo maximo
+			flujo_camino = sum(pesos)
+
+			if flujo_camino > flujo_maximo:
+				flujo_maximo = flujo_camino
 			#actualizacion de los pesos
 			minimo = min(pesos)
 			while len(camino) > 1:
@@ -79,24 +103,23 @@ class Grafo (object):
 				nuevo_peso_arista_2_1 = self.vertices_completo[vertice_1][vertice_2] + minimo
 				self.vertices_completo[vertice_2][vertice_1] = nuevo_peso_arista_2_1
 				
-				if vertice_2 in self.vertices_residual[vertice_1]:
-					self.vertices_residual[vertice_1][vertives_2] = nuevo_peso_arista_1_2
+				if vertice_2 in self.vertices_simil_residual[vertice_1]:
+					self.vertices_simil_residual[vertice_1][vertives_2] = nuevo_peso_arista_1_2
 				else:
-					self.vertices_residual[vertice_2][vertice_1] = nuevo_peso_arista_2_1
+					self.vertices_simil_residual[vertice_2][vertice_1] = nuevo_peso_arista_2_1
 					
 				camino = camino[1:]
-			camino,pesos = self.camino_minimo('s','t')
-			
-		print "Los ejes a vigilar son: ",self.aritas_de_mayor_flujo()
-		
-		
-		
-		
+			camino,pesos = self.camino_minimo('0','1')
+		flujo_max_1, flujo_max_2 = self.aritas_de_mayor_flujo()
+		return flujo_maximo, flujo_max_1, flujo_max_2 #flujo_maximo, arista1, arista2		
+
 	def aritas_de_mayor_flujo(self):
+		'''Devuelve las dos aristas del grafo simil residual (vertices_simil_residual) por las cuales 
+		pasa mayor flujo'''
 		aritas = []
 		
-		for vertice_1 in self.vertices_residual:
-			for vertice_2,peso in self.vertices_residual[vertice_1].items():
+		for vertice_1 in self.vertices_simil_residual:
+			for vertice_2,peso in self.vertices_simil_residual[vertice_1].items():
 				heappush(aritas, ((-1)*peso, (vertice_2,vertice_1)))
 				
 		flujo_1 = heappop(aritas)[1]
@@ -104,21 +127,14 @@ class Grafo (object):
 		 
 		return flujo_1,flujo_2
 				
-							
-
-
-def main():
-	grafo = Grafo()
-	grafo.agregar_arista('s','a',9)
-	grafo.agregar_arista('a','c',8)
-	grafo.agregar_arista('c','t',10)
-	grafo.agregar_arista('s','b',9)
-	grafo.agregar_arista('b','d',3)
-	grafo.agregar_arista('d','t',7)
-	grafo.agregar_arista('a','b',10)
-	grafo.agregar_arista('b','c',1)
-	grafo.agregar_arista('d','c',8)
-	grafo.imprimir_grafo()
-	print grafo.Ford('s','t')
-
-main()
+	def flujo_maximo_despues_de_sabotaje(self, arista_1, arista_2):
+		'''Recibe las dos aristas de mayor flujo de la forma (vertice_1,vertice_2), ya que si 
+		hay sabotaje se roba la informacion que pasa por esas aristas.
+		Se le pone peso cero a las dos aristas pasadas por parametro. Para saber el flujo maximo
+		luego del sabotaje, el grafo al que se le debe aplicar esta funcion es al grafo original.
+		Se le aplica Ford Fulkerson al grafo para objeter el flujo maximo.'''
+		#arista_1 = (vertice_1, vertice_2)
+		self.vertices_completo[arista_1[0]][arista_1[1]] = 0
+		self.vertices_completo[arista_2[0]][arista_2[1]] = 0
+		flujo_maximo, arista_1, arista_2 = self.Ford('0','1')
+		return flujo_maximo

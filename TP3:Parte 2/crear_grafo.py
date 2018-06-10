@@ -1,4 +1,4 @@
-from grafo import Grafo
+from Grafo import Grafo
 
 MSJ_ERROR = "Error: "
 MSJ_IOERROR = "No se pudo acceder al archivo: "
