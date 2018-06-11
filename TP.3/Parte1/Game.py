@@ -21,7 +21,8 @@ class Game:
             for i in range(1, self.COLUMNS + 1, 1):
                 self.board.addCell(Cell(self.ROWS, i-1, line[i]))
             self.ROWS += 1
-        print 1
 
+    def finished(self):
+        return self.board.shipAlive()
 
-Game("board.csv")
+    # def playTurn(self):

@@ -6,5 +6,11 @@ class Board:
     def addCell(self, cell):
         self.cells += [cell]
 
-    def addShip(self,ship):
+    def addShip(self, ship):
         self.ships += [ship]
+
+    def shipAlive(self):
+        for ship in self.ships:
+            if ship.alive():
+                return True
+        return False
