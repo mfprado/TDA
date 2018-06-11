@@ -5,24 +5,33 @@ from Cell import *
 
 
 class Game:
-    ROWS = 0
-    COLUMNS = 0
 
-    def __init__(self, path):
+    def __init__(self, path, strategy, shuttles):
+
+        self.strategy = strategy
+        self.shuttles = shuttles
+
         file = open(path, 'r')
         reader = csv.reader(file, delimiter=' ')
-        self.COLUMNS = len(next(reader)) - 1
+        rows = sum(1 for row in file)
+        file.seek(0)
+        columns = len(next(reader)) - 1
         file.seek(0)
 
-        self.board = Board()
-
+        self.board = Board(rows)
+        actualRow = 0
         for line in reader:
-            self.board.addShip(Ship(line[0]))
-            for i in range(1, self.COLUMNS + 1, 1):
-                self.board.addCell(Cell(self.ROWS, i-1, line[i]))
-            self.ROWS += 1
+            for i in range(1, columns + 1, 1):
+                self.board.addCell(Cell(actualRow, i-1, line[i]))
+            self.board.addShip(line[0], actualRow)
+            actualRow += 1
+
 
     def finished(self):
         return self.board.shipAlive()
 
     # def playTurn(self):
+
+game = Game("board.csv", 1, 1)
+
+

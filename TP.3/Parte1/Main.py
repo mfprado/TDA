@@ -4,10 +4,10 @@ import Game
 
 if __name__ == '__main__':
     board = sys.argv[1]
-    strategy = sys.argv[2]
+    STRATEGY = sys.argv[2]
     SHUTTLES = sys.argv[3]
     game = Game("board.csv", 1, 1)
-    # game = Game(board,strategy, SHUTTLES)
+    # game = Game(board,STRATEGY, SHUTTLES)
     playerA = 0
     playerB = 0
     turn = 1

@@ -1,9 +1,16 @@
 class Cell:
-    X = 0
-    Y = 0
+    row = 0
+    column = 0
     damage = 0
+    ship = None
 
-    def __init__(self, X, Y, damage):
-        self.X = X
-        self.Y = Y
+    def __init__(self, row, column, damage):
+        self.row = row
+        self.column = column
         self.damage = damage
+
+    def noShip(self):
+        ship = None
+
+    def setShip(self, ship):
+        self.ship = ship
