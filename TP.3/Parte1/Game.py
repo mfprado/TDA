@@ -29,13 +29,9 @@ class Game:
 
 
     def finished(self):
-        return self.board.shipAlive()
+        return not self.board.shipAlive()
 
     # def playTurn(self):
 
-
-
-
-game = Game("board.csv", 1, 1)
 
 
