@@ -1,5 +1,4 @@
 import csv
-from Ship import *
 from Board import *
 from Cell import *
 
@@ -10,7 +9,9 @@ class Game:
 
         self.strategy = strategy
         self.shuttles = shuttles
+        self.initializeBoard(path)
 
+    def initializeBoard(self, path):
         file = open(path, 'r')
         reader = csv.reader(file, delimiter=' ')
         rows = sum(1 for row in file)
@@ -22,7 +23,7 @@ class Game:
         actualRow = 0
         for line in reader:
             for i in range(1, columns + 1, 1):
-                self.board.addCell(Cell(actualRow, i-1, line[i]))
+                self.board.addCell(Cell(actualRow, i - 1, line[i]))
             self.board.addShip(line[0], actualRow)
             actualRow += 1
 
@@ -31,6 +32,9 @@ class Game:
         return self.board.shipAlive()
 
     # def playTurn(self):
+
+
+
 
 game = Game("board.csv", 1, 1)
 

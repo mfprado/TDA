@@ -10,3 +10,6 @@ class Ship:
 
     def pos(self):
         return self.row, self.column
+
+    def receiveAttack(self, damage):
+        self.life -= damage
