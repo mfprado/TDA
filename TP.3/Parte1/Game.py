@@ -6,7 +6,6 @@ from Cell import *
 class Game:
 
     def __init__(self, path, strategy, shuttles):
-
         self.strategy = strategy
         self.shuttles = shuttles
         self.initializeBoard(path)
@@ -26,7 +25,6 @@ class Game:
                 self.board.addCell(Cell(actualRow, i - 1, line[i]))
             self.board.addShip(line[0], actualRow)
             actualRow += 1
-
 
     def finished(self):
         return not self.board.shipAlive()
