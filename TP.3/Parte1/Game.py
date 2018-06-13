@@ -1,14 +1,15 @@
 import csv
 from Board import *
 from Cell import *
+from ShuttleArmor import *
 
 
 class Game:
 
-    def __init__(self, path, strategy, shuttles):
+    def __init__(self, path, strategy, shuttlesCount):
         self.strategy = strategy
-        self.shuttles = shuttles
         self.initializeBoard(path)
+        self.shuttleArmor = ShuttleArmor(shuttlesCount)
 
     def initializeBoard(self, path):
         file = open(path, 'r')
@@ -29,7 +30,7 @@ class Game:
     def finished(self):
         return not self.board.shipAlive()
 
-    # def playTurn(self):
-
-
-
+    def playTurn(self):
+        self.shuttleArmor.atack(self.board)
+        self.board.moveShips()
+        return self.board.shipsAliveCount(), 0 #TODO: definir puntos de cada uno
