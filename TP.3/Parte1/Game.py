@@ -23,14 +23,19 @@ class Game:
         actualRow = 0
         for line in reader:
             for i in range(1, columns + 1, 1):
-                self.board.addCell(Cell(actualRow, i - 1, line[i]))
-            self.board.addShip(line[0], actualRow)
+                self.board.addCell(Cell(actualRow, i - 1, float(line[i])))
+            self.board.addShip(float(line[0]), actualRow)
             actualRow += 1
 
     def finished(self):
         return not self.board.shipAlive()
 
     def playTurn(self):
-        self.shuttleArmor.atack(self.board)
+        self.shuttleArmor.attack(self.board)
+        self.board.removeDeadShips()
         self.board.moveShips()
-        return self.board.shipsAliveCount(), 0 #TODO: definir puntos de cada uno
+        return self.board.shipsAliveCount(), 0  #TODO: definir puntos de cada uno
+
+game = Game("board.csv",1,2)
+while not game.finished():
+    game.playTurn()

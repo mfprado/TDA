@@ -55,9 +55,7 @@ class Board:
         return len(self.getShips())
 
     def removeDeadShips(self):
-        for row in self.cells:
-            cell = row[self.shipsActualColumn]
-            ship = cell.getShip()
-            if ship is not None and not ship.alive():
+        for cell in self.getCellsWithShip():
+            if not cell.shipAlive():
                 cell.noShip()
 

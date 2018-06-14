@@ -10,7 +10,15 @@ class Cell:
         self.damage = damage
 
     def noShip(self):
-        ship = None
+        self.ship = None
 
     def setShip(self, ship):
         self.ship = ship
+
+    def getShip(self):
+        return self.ship
+
+    def shipAlive(self):
+        if self.ship is not None:
+            return self.ship.alive()
+        return False
