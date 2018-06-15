@@ -59,3 +59,34 @@ class Board:
             if not cell.shipAlive():
                 cell.noShip()
 
+    def draw(self):
+        draw = ""
+        for row in self.cells:
+            for i in range(0, len(row)):
+                draw += " _____ "
+            draw += ("\n")
+            for cell in row:
+                draw += "|"
+                if cell.shipAlive():
+                    draw += "BARCO"
+                else:
+                    draw += "     "
+                draw += "|"
+            draw += "\n"
+            for cell in row:
+                draw += "|"
+                point = ""
+                if cell.shipAlive():
+                    point += str(cell.getShip().life)
+                else:
+                    point += "     "
+                if len(point) < 5:
+                    for i in range(0, 5 - len(point)):
+                        point += " "
+
+                draw += point + "|"
+            draw += "\n"
+            for i in range(0, len(row)):
+                draw += " ----- "
+            draw += ("\n")
+        print(draw)

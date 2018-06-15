@@ -4,10 +4,9 @@ import Game
 
 if __name__ == '__main__':
     boardPath = sys.argv[1]
-    strategy = sys.argv[2]
-    shuttlesCount = sys.argv[3]
-    game = Game("board.csv", 1, 1)
-    # game = Game(boardPath, strategy, shuttlesCount)
+    shuttlesCount = sys.argv[2]
+    game = Game("board.csv", 1)
+    # game = Game(boardPath, shuttles)
     playerA = 0
     playerB = 0
     turn = 1

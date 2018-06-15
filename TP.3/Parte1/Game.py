@@ -6,8 +6,7 @@ from ShuttleArmor import *
 
 class Game:
 
-    def __init__(self, path, strategy, shuttlesCount):
-        self.strategy = strategy
+    def __init__(self, path, shuttlesCount):
         self.initializeBoard(path)
         self.shuttleArmor = ShuttleArmor(shuttlesCount)
 
@@ -23,19 +22,21 @@ class Game:
         actualRow = 0
         for line in reader:
             for i in range(1, columns + 1, 1):
-                self.board.addCell(Cell(actualRow, i - 1, float(line[i])))
-            self.board.addShip(float(line[0]), actualRow)
+                self.board.addCell(Cell(actualRow, i - 1, int(line[i])))
+            self.board.addShip(int(line[0]), actualRow)
             actualRow += 1
 
     def finished(self):
         return not self.board.shipAlive()
 
     def playTurn(self):
+        self.board.draw()
         self.shuttleArmor.attack(self.board)
         self.board.removeDeadShips()
+        self.board.draw()
         self.board.moveShips()
         return self.board.shipsAliveCount(), 0  #TODO: definir puntos de cada uno
 
-game = Game("board.csv",1,2)
+game = Game("board.csv",2)
 while not game.finished():
     game.playTurn()
