@@ -12,11 +12,13 @@ class ShuttleArmor:
 
     def attack(self, board):
         shoots = self.shuttlesCount
+        print("Ataque a celdass: \n")
         for cell in self.defineCellsToAttack(board):
             if shoots <= 0:
                 break
             ship = cell.getShip()
             while shoots > 0:
+                    print ("(" + str(cell.row) + ", " + str(cell.column) + ")\n")
                     ship.receiveAttack(cell.damage)
                     shoots -= 1
 

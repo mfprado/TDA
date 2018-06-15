@@ -30,13 +30,12 @@ class Game:
         return not self.board.shipAlive()
 
     def playTurn(self):
+        print("\nINICIO DE TURNO: ")
         self.board.draw()
         self.shuttleArmor.attack(self.board)
         self.board.removeDeadShips()
+        print("TABLERO POST ATAQUE: ")
         self.board.draw()
         self.board.moveShips()
         return self.board.shipsAliveCount(), 0  #TODO: definir puntos de cada uno
 
-game = Game("board.csv",2)
-while not game.finished():
-    game.playTurn()

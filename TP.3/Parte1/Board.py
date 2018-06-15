@@ -77,14 +77,21 @@ class Board:
                 draw += "|"
                 point = ""
                 if cell.shipAlive():
-                    point += str(cell.getShip().life)
+                    point += "V:" + str(cell.getShip().life)
                 else:
                     point += "     "
                 if len(point) < 5:
                     for i in range(0, 5 - len(point)):
                         point += " "
-
                 draw += point + "|"
+            draw += "\n"
+            for cell in row:
+                draw += "|"
+                cellDamage = "D:" + str(cell.damage)
+                if len(cellDamage) < 5:
+                    for i in range(0, 5 - len(cellDamage)):
+                        cellDamage += " "
+                draw += cellDamage + "|"
             draw += "\n"
             for i in range(0, len(row)):
                 draw += " ----- "
