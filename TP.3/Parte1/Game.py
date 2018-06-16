@@ -34,8 +34,8 @@ class Game:
         self.board.draw()
         self.shuttleArmor.attack(self.board)
         self.board.removeDeadShips()
-        print("TABLERO POST ATAQUE: ")
+        print("\nTABLERO POST ATAQUE: ")
         self.board.draw()
         self.board.moveShips()
-        return self.board.shipsAliveCount(), 0  #TODO: definir puntos de cada uno
+        return self.board.shipsAliveCount()
 
