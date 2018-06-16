@@ -17,7 +17,7 @@ class ShuttleArmor:
             if shoots <= 0:
                 break
             ship = cell.getShip()
-            while shoots > 0:
+            while shoots > 0 and ship.alive():
                     print ("(" + str(cell.row) + ", " + str(cell.column) + ")\n")
                     ship.receiveAttack(cell.damage)
                     shoots -= 1
