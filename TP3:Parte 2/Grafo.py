@@ -28,11 +28,6 @@ class Grafo (object):
 		'''Devuelde una lista con el seguimiento del camino minimo entre origen y destino.
 		Tambien devuelve una lista con los pesos de las aristas recorridas, estos pesos no se devuelven
 		en el orden de recorrido necesariamente'''
-
-		"""if destino!= None:
-			if not origen in self.vertices or not destino in self.vertices:
-				raise KeyError()"""
-		
 		vecinos = []
 		vuelta = {}
 		costos = {}
@@ -110,23 +105,26 @@ class Grafo (object):
 					
 				camino = camino[1:]
 			camino,pesos = self.camino_minimo('0','1')
-		flujo_max_1, flujo_max_2 = self.aritas_de_mayor_flujo()
-		return flujo_maximo, flujo_max_1, flujo_max_2 #flujo_maximo, arista1, arista2		
+		arista_flujo_max = self.arista_max_flujo()
+		return flujo_maximo, arista_flujo_max #flujo_maximo, arista_max_flujo	
 
-	def aritas_de_mayor_flujo(self):
-		'''Devuelve las dos aristas del grafo simil residual (vertices_simil_residual) por las cuales 
+	def arista_max_flujo(self):
+		'''Devuelve la arista del grafo simil residual (vertices_simil_residual) por la cual 
 		pasa mayor flujo'''
-		aritas = []
+		arista = (0, (0,0))
 		
 		for vertice_1 in self.vertices_simil_residual:
-			for vertice_2,peso in self.vertices_simil_residual[vertice_1].items():
-				heappush(aritas, ((-1)*peso, (vertice_2,vertice_1)))
-				
-		flujo_1 = heappop(aritas)[1]
-		flujo_2 = heappop(aritas)[1]
-		 
-		return flujo_1,flujo_2
-				
+			for vertice_2, peso in self.vertices_simil_residual[vertice_1].items():
+				if peso>arista[0]:
+					arista = (peso, (vertice_2,vertice_1))
+
+		return arista[1]
+
+	def eliminar_arista(self, arista):
+		'''Elimina el peso de la arista pasada por parametro.
+		arista = (vertice_1, vertice_2)'''
+		self.vertices_completo[arista[0]][arista[1]] = 0
+
 	def flujo_maximo_despues_de_sabotaje(self, arista_1, arista_2):
 		'''Recibe las dos aristas de mayor flujo de la forma (vertice_1,vertice_2), ya que si 
 		hay sabotaje se roba la informacion que pasa por esas aristas.
@@ -134,7 +132,7 @@ class Grafo (object):
 		luego del sabotaje, el grafo al que se le debe aplicar esta funcion es al grafo original.
 		Se le aplica Ford Fulkerson al grafo para objeter el flujo maximo.'''
 		#arista_1 = (vertice_1, vertice_2)
-		self.vertices_completo[arista_1[0]][arista_1[1]] = 0
-		self.vertices_completo[arista_2[0]][arista_2[1]] = 0
-		flujo_maximo, arista_1, arista_2 = self.Ford('0','1')
+		self.eliminar_arista(arista_1)
+		self.eliminar_arista(arista_2)
+		flujo_maximo, arista = self.Ford('0','1')
 		return flujo_maximo
