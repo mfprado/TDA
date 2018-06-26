@@ -83,13 +83,9 @@ class Grafo (object):
 		camino,pesos = self.camino_minimo('0','1')
 		flujo_maximo = 0
 		while camino != None:
-			#guardamos el flujo maximo
-			flujo_camino = sum(pesos)
-
-			if flujo_camino > flujo_maximo:
-				flujo_maximo = flujo_camino
 			#actualizacion de los pesos
 			minimo = min(pesos)
+			flujo_maximo += minimo #se suman los 'cuellos de botella'
 			while len(camino) > 1:
 				vertice_1 = camino[0]
 				vertice_2 = camino[1]
