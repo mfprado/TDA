@@ -3,7 +3,6 @@ from DinamicAttack import *
 
 class ShuttleArmor:
     def __init__(self, shuttlesCount, strategy):
-        self.attackStrategy = None
         if strategy == "DINAMICO":
             self.attackStrategy = DinamicAttack(shuttlesCount)
         else:
