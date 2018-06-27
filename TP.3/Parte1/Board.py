@@ -68,7 +68,7 @@ class Board:
             for cell in row:
                 draw += "|"
                 if not cell.ship == None:
-                    draw += "BARCO"
+                    draw += "\033[94mBARCO\033[0m"
                 else:
                     draw += "     "
                 draw += "|"
@@ -83,7 +83,7 @@ class Board:
                 if len(point) < 5:
                     for i in range(0, 5 - len(point)):
                         point += " "
-                draw += point + "|"
+                draw += "\033[93m" + point + "\033[0m|"
             draw += "\n"
             for cell in row:
                 draw += "|"
@@ -91,7 +91,7 @@ class Board:
                 if len(cellDamage) < 5:
                     for i in range(0, 5 - len(cellDamage)):
                         cellDamage += " "
-                draw += cellDamage + "|"
+                draw += "\033[91m" + cellDamage + "\033[0m|"
             draw += "\n"
             for i in range(0, len(row)):
                 draw += " ----- "
