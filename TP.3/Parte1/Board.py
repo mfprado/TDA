@@ -67,7 +67,7 @@ class Board:
             draw += ("\n")
             for cell in row:
                 draw += "|"
-                if cell.shipAlive():
+                if not cell.ship == None:
                     draw += "BARCO"
                 else:
                     draw += "     "
@@ -76,7 +76,7 @@ class Board:
             for cell in row:
                 draw += "|"
                 point = ""
-                if cell.shipAlive():
+                if not cell.ship == None:
                     point += "V:" + str(cell.getShip().life)
                 else:
                     point += "     "
