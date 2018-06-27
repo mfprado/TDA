@@ -5,7 +5,8 @@ from Game import *
 if __name__ == '__main__':
     boardPath = sys.argv[1]
     shuttlesCount = sys.argv[2]
-    game = Game(boardPath, int(shuttlesCount))
+    strategy = sys.argv[3]
+    game = Game(boardPath, int(shuttlesCount), strategy)
     points = 0
     turn = 1
     while not game.finished():

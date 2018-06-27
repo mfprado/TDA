@@ -6,9 +6,9 @@ from ShuttleArmor import *
 
 class Game:
 
-    def __init__(self, path, shuttlesCount):
+    def __init__(self, path, shuttlesCount, strategy):
         self.initializeBoard(path)
-        self.shuttleArmor = ShuttleArmor(shuttlesCount)
+        self.shuttleArmor = ShuttleArmor(shuttlesCount, strategy)
 
     def initializeBoard(self, path):
         file = open(path, 'r')
@@ -38,4 +38,3 @@ class Game:
         self.board.draw()
         self.board.moveShips()
         return self.board.shipsAliveCount()
-
