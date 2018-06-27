@@ -9,6 +9,7 @@ if __name__ == '__main__':
     game = Game(boardPath, int(shuttlesCount), strategy)
     points = 0
     turn = 1
+    print("\n\x1b[5;30;41mJUGANDO CON ESTRATEGIA: " + strategy + "\x1b[0m\n")
     while not game.finished():
         print ("TURNO NUMERO: " + str(turn))
         points += game.playTurn()
