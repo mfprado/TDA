@@ -40,7 +40,7 @@ class Game:
         return self.board.shipsAliveCount()
 
 
-game = Game("board.csv", 3, "DINAMICO")
+game = Game("board.csv", 1, "DINAMICO")
 points = 0
 turn = 1
 while not game.finished():
