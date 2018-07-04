@@ -38,3 +38,14 @@ class Game:
         self.board.removeDeadShips()
         self.board.moveShips()
         return self.board.shipsAliveCount()
+
+
+game = Game("board.csv", 3, "DINAMICO")
+points = 0
+turn = 1
+while not game.finished():
+    print ("TURNO NUMERO: " + str(turn))
+    points += game.playTurn()
+    print ("PUNTOS : " + str(points))
+    print ("TURNOS TOTALES: " + str(turn))
+    turn += 1

@@ -3,6 +3,7 @@ from Ship import *
 
 class Board:
     def __init__(self, rows):
+        self.rows = rows
         self.shipsActualColumn = 0
         self.cells = []
         for row in range(0, rows, 1):
