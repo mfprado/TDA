@@ -39,13 +39,3 @@ class Game:
         self.board.moveShips()
         return self.board.shipsAliveCount()
 
-
-game = Game("board.csv", 1, "DINAMICO")
-points = 0
-turn = 1
-while not game.finished():
-    print ("TURNO NUMERO: " + str(turn))
-    points += game.playTurn()
-    print ("PUNTOS : " + str(points))
-    print ("TURNOS TOTALES: " + str(turn))
-    turn += 1

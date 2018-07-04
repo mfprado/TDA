@@ -29,7 +29,7 @@ class DinamicAttack(AttackStrategy):
 
     def defineShipsOrderToDie(self, board):
         deathOrderCombinations = list(permutations(range(0, board.rows)))
-        deathOrderCombinationsTurns = dict.fromkeys(deathOrderCombinations, 0)
+        deathOrderCombinationsPoints = dict.fromkeys(deathOrderCombinations, 0)
         for deathOrder in deathOrderCombinations:
             points = 0
             startColumn = 0
@@ -38,9 +38,9 @@ class DinamicAttack(AttackStrategy):
                 turnsCount = self.turnsToKillShipStartingInColumn(shipRow, startColumn, board)
                 points += (len(deathOrder) - i) * turnsCount - 1
                 startColumn = (startColumn + turnsCount) % (board.rows-1)
-            deathOrderCombinationsTurns[deathOrder] = points
+            deathOrderCombinationsPoints[deathOrder] = points
         del self.turnsToKillShip
-        self.deathShipsOrder = min(deathOrderCombinationsTurns, key=deathOrderCombinationsTurns.get)
+        self.deathShipsOrder = min(deathOrderCombinationsPoints, key=deathOrderCombinationsPoints.get)
 
 
     def turnsToKillShipStartingInColumn(self, shipRow, startColumn, board):
@@ -53,7 +53,7 @@ class DinamicAttack(AttackStrategy):
             while shipLife > 0:
                 shipLife -= self.shuttlesCount * board.cells[shipRow][actualColumn].damage
                 turns += 1
-                actualColumn = (actualColumn+1)% (board.rows-1)
+                actualColumn = (actualColumn+1) % (board.rows-1)
 
             self.turnsToKillShip[(shipRow, startColumn)] = turns
             return turns
