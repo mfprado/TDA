@@ -12,6 +12,7 @@ class DinamicAttack(AttackStrategy):
     def attack(self, board):
         if self.deathShipsOrder == None:
             self.defineShipsOrderToDie(board)
+            print(self.deathShipsOrder)
             self.attack(board)
         else:
             row = self.deathShipsOrder[0]
@@ -36,13 +37,14 @@ class DinamicAttack(AttackStrategy):
                 shipRow = deathOrder[i]
                 turnsCount = self.turnsToKillShipStartingInColumn(shipRow, startColumn, board)
                 points += (len(deathOrder) - i) * turnsCount - 1
-                startColumn = (startColumn + turnsCount) % board.rows
+                startColumn = (startColumn + turnsCount) % (board.rows-1)
             deathOrderCombinationsTurns[deathOrder] = points
-        self.deathShipsOrder =  min(deathOrderCombinationsTurns, key=deathOrderCombinationsTurns.get)
+        del self.turnsToKillShip
+        self.deathShipsOrder = min(deathOrderCombinationsTurns, key=deathOrderCombinationsTurns.get)
 
 
     def turnsToKillShipStartingInColumn(self, shipRow, startColumn, board):
-        if self.turnsToKillShip.has_key((shipRow, startColumn)):
+        if (shipRow, startColumn) in self.turnsToKillShip:
             return self.turnsToKillShip[(shipRow, startColumn)]
         else:
             turns = 0
@@ -51,7 +53,7 @@ class DinamicAttack(AttackStrategy):
             while shipLife > 0:
                 shipLife -= self.shuttlesCount * board.cells[shipRow][actualColumn].damage
                 turns += 1
-                actualColumn = (actualColumn+1)%3
+                actualColumn = (actualColumn+1)% (board.rows-1)
 
             self.turnsToKillShip[(shipRow, startColumn)] = turns
             return turns
