@@ -1,0 +1,15 @@
+RESULTADOS DE LOS TESTS
+Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
+  Puntos: 36
+Tablero: victorTests/bNaval_uniforme4x4_difVida.txt - Con Lanzaderas: 2
+  Puntos: 22
+Tablero: victorTests/bNaval_random5x4_0_100.txt - Con Lanzaderas: 3
+  Puntos: 5
+Tablero: victorTests/bNaval_random4x4_0_20.txt - Con Lanzaderas: 3
+  Puntos: 9
+Tablero: victorTests/bNaval_pocodenso16x4.txt - Con Lanzaderas: 4
+  Puntos: 101
+Tablero: victorTests/bNaval_gradientes_invertidos_4x5.txt - Con Lanzaderas: 2
+  Puntos: 9
+Tablero: victorTests/bNaval_mas_de_uno.txt - Con Lanzaderas: 2
+  Puntos: 20

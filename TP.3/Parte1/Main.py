@@ -1,7 +1,6 @@
 import sys
 from Game import *
 
-
 if __name__ == '__main__':
     boardPath = sys.argv[1]
     shuttlesCount = sys.argv[2]
@@ -16,3 +15,8 @@ if __name__ == '__main__':
         print ("PUNTOS : " + str(points))
         print ("TURNOS TOTALES: " + str(turn))
         turn += 1
+
+
+    f = open('output.txt', 'a')
+    f.write("Tablero: " + str(boardPath) + " - Con Lanzaderas: " + str(shuttlesCount) + "\n  Puntos: " + str(points) + "\n")
+    f.close()
