@@ -58,6 +58,3 @@ class DinamicAttack(AttackStrategy):
 
             self.turnsToKillShip[(shipRow, startColumn)] = turns
             return turns
-
-
-
