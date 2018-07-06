@@ -36,9 +36,10 @@ class DinamicAttack(AttackStrategy):
             for i in range(0, len(deathOrder)):
                 shipRow = deathOrder[i]
                 turnsCount = self.turnsToKillShipStartingInColumn(shipRow, startColumn, board)
-                points += (len(deathOrder) - i) * turnsCount - 1
+                points += (len(deathOrder) - i) * (turnsCount - 1)
                 startColumn = (startColumn + turnsCount) % (board.rows-1)
             deathOrderCombinationsPoints[deathOrder] = points
+        print(deathOrderCombinationsPoints)
         del self.turnsToKillShip
         self.deathShipsOrder = min(deathOrderCombinationsPoints, key=deathOrderCombinationsPoints.get)
 
