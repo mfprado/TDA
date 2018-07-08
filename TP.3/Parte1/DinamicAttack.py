@@ -11,9 +11,9 @@ class DinamicAttack(AttackStrategy):
     def attack(self, board):
         if not hasattr(self, "deathShipsOrder"):
             self.deathShipsOrder = list(self.defineShipsOrderToDie(board))
-            print(self.deathShipsOrder)
             self.attack(board)
         else:
+            print(self.deathShipsOrder)
             row = self.deathShipsOrder[0]
             column = board.shipsActualColumn
             print("Ataque a celda (" + str(row) + " ," + str(column) + ") con las " + str(self.shuttlesCount) + " lanzaderas\n")
@@ -21,10 +21,8 @@ class DinamicAttack(AttackStrategy):
                 cellToAttack = board.cells[row][column]
                 ship = cellToAttack.getShip()
                 ship.receiveAttack(cellToAttack.damage)
-                if not ship.alive():
-                    i = self.shuttlesCount
-                    if len(self.deathShipsOrder) > 1:
-                        self.deathShipsOrder = self.deathShipsOrder[1: len(self.deathShipsOrder)]
+            if (not ship.alive()) and len(self.deathShipsOrder) > 1:
+                self.deathShipsOrder = self.deathShipsOrder[1: len(self.deathShipsOrder)]
 
     def defineShipsOrderToDie(self, board):
         deathOrderCombinationsPoints = dict.fromkeys(list(permutations(range(0, board.rows))), 0)
@@ -37,8 +35,6 @@ class DinamicAttack(AttackStrategy):
                 points += (len(deathOrder) - i) * (turnsCount - 1) + (len(deathOrder) - i - 1)
                 startColumn = (startColumn + turnsCount) % (board.rows - 1)
             deathOrderCombinationsPoints[deathOrder] = points
-        print(deathOrderCombinationsPoints)
-        print(min(deathOrderCombinationsPoints, key=deathOrderCombinationsPoints.get))
         del self.turnsToKillShip
         return min(deathOrderCombinationsPoints, key=deathOrderCombinationsPoints.get)
 

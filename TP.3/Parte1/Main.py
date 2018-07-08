@@ -2,13 +2,10 @@ import sys
 from Game import *
 
 if __name__ == '__main__':
-    # boardPath = sys.argv[1]
-    # shuttlesCount = sys.argv[2]
-    # strategy = sys.argv[3]
-    #
-    boardPath = "victorTests/bNaval_random5x4_0_100.txt"
-    shuttlesCount = 3
-    strategy = "DINAMICO"
+    boardPath = sys.argv[1]
+    shuttlesCount = sys.argv[2]
+    strategy = sys.argv[3]
+
     game = Game(boardPath, int(shuttlesCount), strategy)
     points = 0
     turn = 1

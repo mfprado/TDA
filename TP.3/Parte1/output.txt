@@ -2,26 +2,28 @@ RESULTADOS DE LOS TESTS
 Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
 Modo: DINAMICO - Puntos: 36
 Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
-Modo: DINAMICO - Puntos: 36
-Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
-Modo: DINAMICO - Puntos: 36
-Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
-Modo: DINAMICO - Puntos: 36
-Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
-Modo: DINAMICO - Puntos: 36
-Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
-Modo: DINAMICO - Puntos: 36
-Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
-Modo: DINAMICO - Puntos: 36
-Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
-Modo: DINAMICO - Puntos: 36
-Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
-Modo: DINAMICO - Puntos: 36
-Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
-Modo: DINAMICO - Puntos: 36
-Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
-Modo: DINAMICO - Puntos: 36
-Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
-Modo: DINAMICO - Puntos: 36
-Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
-Modo: DINAMICO - Puntos: 36
+Modo: GREEDO - Puntos: 36
+Tablero: victorTests/bNaval_uniforme4x4_difVida.txt - Con Lanzaderas: 2
+Modo: DINAMICO - Puntos: 22
+Tablero: victorTests/bNaval_uniforme4x4_difVida.txt - Con Lanzaderas: 2
+Modo: GREEDO - Puntos: 22
+Tablero: victorTests/bNaval_random5x4_0_100.txt - Con Lanzaderas: 3
+Modo: DINAMICO - Puntos: 10
+Tablero: victorTests/bNaval_random5x4_0_100.txt - Con Lanzaderas: 3
+Modo: GREEDO - Puntos: 5
+Tablero: victorTests/bNaval_random4x4_0_20.txt - Con Lanzaderas: 3
+Modo: DINAMICO - Puntos: 13
+Tablero: victorTests/bNaval_random4x4_0_20.txt - Con Lanzaderas: 3
+Modo: GREEDO - Puntos: 9
+Tablero: victorTests/bNaval_pocodenso16x4.txt - Con Lanzaderas: 4
+Modo: DINAMICO - Puntos: 148
+Tablero: victorTests/bNaval_pocodenso16x4.txt - Con Lanzaderas: 4
+Modo: GREEDO - Puntos: 101
+Tablero: victorTests/bNaval_gradientes_invertidos_4x5.txt - Con Lanzaderas: 2
+Modo: DINAMICO - Puntos: 14
+Tablero: victorTests/bNaval_gradientes_invertidos_4x5.txt - Con Lanzaderas: 2
+Modo: GREEDO - Puntos: 9
+Tablero: victorTests/bNaval_mas_de_uno.txt - Con Lanzaderas: 2
+Modo: DINAMICO - Puntos: 30
+Tablero: victorTests/bNaval_mas_de_uno.txt - Con Lanzaderas: 2
+Modo: GREEDO - Puntos: 20
