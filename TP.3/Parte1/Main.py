@@ -19,6 +19,6 @@ if __name__ == '__main__':
 
 
     f = open('output.txt', 'a')
-    f.write("Tablero: " + str(boardPath) + " - Con Lanzaderas: " + str(shuttlesCount) + "\nModo: " + str(strategy) +    " - Puntos: " + str(points) + "\n")
+    f.write("Tablero: " + str(boardPath[12:len(boardPath)]) + " - Lanzaderas: " + str(shuttlesCount) + " - Modo: " + str(strategy) +    " - Puntos: " + str(points) + "\n")
     f.close()
 
