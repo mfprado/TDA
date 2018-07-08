@@ -34,8 +34,8 @@ class DinamicAttack(AttackStrategy):
             for i in range(0, len(deathOrder)):
                 shipRow = deathOrder[i]
                 turnsCount = self.turnsToKillShipStartingInColumn(shipRow, startColumn, board)
-                points += (len(deathOrder) - i) * (turnsCount - 1)
-                startColumn = (startColumn + turnsCount) % (board.rows-1)
+                points += (len(deathOrder) - i) * (turnsCount - 1) + (len(deathOrder) - i - 1)
+                startColumn = (startColumn + turnsCount) % (board.rows - 1)
             deathOrderCombinationsPoints[deathOrder] = points
         print(deathOrderCombinationsPoints)
         print(min(deathOrderCombinationsPoints, key=deathOrderCombinationsPoints.get))
@@ -53,7 +53,7 @@ class DinamicAttack(AttackStrategy):
             while shipLife > 0:
                 shipLife -= self.shuttlesCount * board.cells[shipRow][actualColumn].damage
                 turns += 1
-                actualColumn = (actualColumn+1) % (board.rows-1)
+                actualColumn = (actualColumn+1) % (board.rows - 1)
 
             self.turnsToKillShip[(shipRow, startColumn)] = turns
             return turns

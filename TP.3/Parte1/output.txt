@@ -1,9 +1,25 @@
 RESULTADOS DE LOS TESTS
 Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
 Modo: DINAMICO - Puntos: 36
-Tablero: victorTests/bNaval_uniforme4x4_difVida.txt - Con Lanzaderas: 2
-Modo: DINAMICO - Puntos: 22
-Tablero: victorTests/bNaval_pocodenso16x4.txt - Con Lanzaderas: 4
-Modo: DINAMICO - Puntos: 148
-Tablero: victorTests/bNaval_gradientes_invertidos_4x5.txt - Con Lanzaderas: 2
-Modo: DINAMICO - Puntos: 14
+Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
+Modo: DINAMICO - Puntos: 36
+Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
+Modo: DINAMICO - Puntos: 36
+Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
+Modo: DINAMICO - Puntos: 36
+Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
+Modo: DINAMICO - Puntos: 36
+Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
+Modo: DINAMICO - Puntos: 36
+Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
+Modo: DINAMICO - Puntos: 36
+Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
+Modo: DINAMICO - Puntos: 36
+Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
+Modo: DINAMICO - Puntos: 36
+Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
+Modo: DINAMICO - Puntos: 36
+Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
+Modo: DINAMICO - Puntos: 36
+Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
+Modo: DINAMICO - Puntos: 36
