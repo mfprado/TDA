@@ -23,3 +23,5 @@ Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
 Modo: DINAMICO - Puntos: 36
 Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
 Modo: DINAMICO - Puntos: 36
+Tablero: victorTests/bNaval_uniforme4x4.txt - Con Lanzaderas: 2
+Modo: DINAMICO - Puntos: 36
