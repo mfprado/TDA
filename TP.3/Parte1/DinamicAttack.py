@@ -6,12 +6,11 @@ class DinamicAttack(AttackStrategy):
 
     def __init__(self, shuttlesCount):
         AttackStrategy.__init__(self, shuttlesCount)
-        self.deathShipsOrder = None
         self.turnsToKillShip = {}
 
     def attack(self, board):
-        if self.deathShipsOrder == None:
-            self.defineShipsOrderToDie(board)
+        if not hasattr(self, "deathShipsOrder"):
+            self.deathShipsOrder = list(self.defineShipsOrderToDie(board))
             print(self.deathShipsOrder)
             self.attack(board)
         else:
@@ -28,9 +27,8 @@ class DinamicAttack(AttackStrategy):
                         self.deathShipsOrder = self.deathShipsOrder[1: len(self.deathShipsOrder)]
 
     def defineShipsOrderToDie(self, board):
-        deathOrderCombinations = list(permutations(range(0, board.rows)))
-        deathOrderCombinationsPoints = dict.fromkeys(deathOrderCombinations, 0)
-        for deathOrder in deathOrderCombinations:
+        deathOrderCombinationsPoints = dict.fromkeys(list(permutations(range(0, board.rows))), 0)
+        for deathOrder in deathOrderCombinationsPoints:
             points = 0
             startColumn = 0
             for i in range(0, len(deathOrder)):
@@ -40,8 +38,9 @@ class DinamicAttack(AttackStrategy):
                 startColumn = (startColumn + turnsCount) % (board.rows-1)
             deathOrderCombinationsPoints[deathOrder] = points
         print(deathOrderCombinationsPoints)
+        print(min(deathOrderCombinationsPoints, key=deathOrderCombinationsPoints.get))
         del self.turnsToKillShip
-        self.deathShipsOrder = min(deathOrderCombinationsPoints, key=deathOrderCombinationsPoints.get)
+        return min(deathOrderCombinationsPoints, key=deathOrderCombinationsPoints.get)
 
 
     def turnsToKillShipStartingInColumn(self, shipRow, startColumn, board):

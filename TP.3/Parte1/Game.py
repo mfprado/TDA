@@ -38,3 +38,4 @@ class Game:
         self.board.removeDeadShips()
         self.board.moveShips()
         return self.board.shipsAliveCount()
+
