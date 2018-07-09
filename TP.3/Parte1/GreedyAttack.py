@@ -2,8 +2,8 @@ from AttackStrategy import *
 
 class GreedyAttack(AttackStrategy):
 
-    def __init__(self, shuttlesCount):
-        AttackStrategy.__init__(self, shuttlesCount)
+    def __init__(self, shuttlesCount, board):
+        AttackStrategy.__init__(self, shuttlesCount, board)
 
     def orderByDamageFraction(self, cells):
         cells.sort(key=lambda cell: cell.damage/cell.getShip().life, reverse=True)

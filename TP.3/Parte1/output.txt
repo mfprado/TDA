@@ -13,3 +13,10 @@ Tablero: bNaval_gradientes_invertidos_4x5.txt - Lanzaderas: 2 - Modo: GREEDO - P
 Tablero: bNaval_gradientes_invertidos_4x5.txt - Lanzaderas: 2 - Modo: DINAMICO - Puntos: 14
 Tablero: bNaval_mas_de_uno.txt - Lanzaderas: 2 - Modo: GREEDO - Puntos: 20
 Tablero: bNaval_mas_de_uno.txt - Lanzaderas: 2 - Modo: DINAMICO - Puntos: 30
+Tablero: s/bNaval_gradientes_invertidos_4x5.txt - Lanzaderas: 3 - Modo: DINAMICO - Puntos: 6
+Tablero: s/bNaval_gradientes_invertidos_4x5.txt - Lanzaderas: 3 - Modo: DINAMICO - Puntos: 6
+Tablero: s/bNaval_gradientes_invertidos_4x5.txt - Lanzaderas: 3 - Modo: DINAMICO - Puntos: 6
+Tablero: s/bNaval_gradientes_invertidos_4x5.txt - Lanzaderas: 3 - Modo: DINAMICO - Puntos: 6
+Tablero: s/bNaval_random4x4_0_20.txt - Lanzaderas: 3 - Modo: GREEDO - Puntos: 14
+Tablero: s/bNaval_random4x4_0_20.txt - Lanzaderas: 3 - Modo: GREEDO - Puntos: 14
+Tablero: s/bNaval_random4x4_0_20.txt - Lanzaderas: 3 - Modo: GREEDO - Puntos: 14

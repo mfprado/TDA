@@ -7,8 +7,10 @@ from ShuttleArmor import *
 class Game:
 
     def __init__(self, path, shuttlesCount, strategy):
+        self.shuttlesCount = shuttlesCount
+        self.strategy = strategy
         self.initializeBoard(path)
-        self.shuttleArmor = ShuttleArmor(shuttlesCount, strategy)
+        
 
     def initializeBoard(self, path):
         file = open(path, 'r')
@@ -25,6 +27,7 @@ class Game:
                 self.board.addCell(Cell(actualRow, i - 1, int(line[i])))
             self.board.addShip(int(line[0]), actualRow)
             actualRow += 1
+        self.shuttleArmor = ShuttleArmor(self.shuttlesCount, self.strategy, self.board)
 
     def finished(self):
         return not self.board.shipAlive()

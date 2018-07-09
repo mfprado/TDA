@@ -2,6 +2,7 @@ import sys
 from Game import *
 
 if __name__ == '__main__':
+    sys.setrecursionlimit(99999999999)
     boardPath = sys.argv[1]
     shuttlesCount = sys.argv[2]
     strategy = sys.argv[3]
