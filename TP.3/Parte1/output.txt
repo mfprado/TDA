@@ -51,3 +51,8 @@ Tablero: s/bNaval_uniforme4x4.txt - Lanzaderas: 4 - Modo: DINAMICO - Puntos: 1
 Tablero: s/bNaval_uniforme4x4.txt - Lanzaderas: 4 - Modo: DINAMICO - Puntos: 1
 Tablero: s/bNaval_uniforme4x4.txt - Lanzaderas: 4 - Modo: DINAMICO - Puntos: 1
 Tablero: s/bNaval_uniforme4x4.txt - Lanzaderas: 4 - Modo: DINAMICO - Puntos: 1
+Tablero: s/bNaval_uniforme4x4.txt - Lanzaderas: 3 - Modo: DINAMICO - Puntos: 7
+Tablero: s/bNaval_uniforme4x4.txt - Lanzaderas: 3 - Modo: DINAMICO - Puntos: 7
+Tablero: s/bNaval_gradientes_invertidos_4x5.txt - Lanzaderas: 3 - Modo: DINAMICO - Puntos: 6
+Tablero: s/bNaval_gradientes_invertidos_4x5.txt - Lanzaderas: 1 - Modo: DINAMICO - Puntos: 26
+Tablero: s/bNaval_mas_de_uno.txt - Lanzaderas: 3 - Modo: DINAMICO - Puntos: 9

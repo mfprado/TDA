@@ -17,8 +17,8 @@ class DinamicAttack(AttackStrategy):
 		#self.turnsToKillShip = {}
 		self.ataques = {} #(vidas, columna) = (ataqueOptimo, puntosTotales)
 		self.listaAtaques = numpy.array(list(self.partitions(shuttlesCount, len(self.barcos))))
-		print self.listaAtaques
 		self.calcularAtaqueOptimo(self.barcos, 0, board)
+
 
 	def partitions(self, n, b):
 		masks = numpy.identity(b, dtype=int)
@@ -41,16 +41,23 @@ class DinamicAttack(AttackStrategy):
 
 
 		for ataque in self.listaAtaques:
-			barcosAAtacar = barcos
-			barcosAtacados = self.atacar(barcosAAtacar, board, posicion, ataque)
-			(ataqueOptimo , puntosOptimo) = self.calcularAtaqueOptimo(barcosAtacados, turno+1, board)
-			puntos = self.barcosVivos(barcosAtacados) + puntosOptimo
-			if (tuple(barcos), posicion) in self.ataques:
-				if self.ataques[(tuple(barcos), posicion)][1]>puntos:
+			barcosAAtacar = barcos[:]
+			if self.ataqueEsPosible(barcosAAtacar, board, posicion,ataque):
+				barcosAtacados = self.atacar(barcosAAtacar, board, posicion, ataque)
+				(ataqueOptimo , puntosOptimo) = self.calcularAtaqueOptimo(barcosAtacados, turno+1, board)
+				puntos = self.barcosVivos(barcosAtacados) + puntosOptimo
+				if (tuple(barcos), posicion) in self.ataques:
+					if self.ataques[(tuple(barcos), posicion)][1]>puntos:
+						self.ataques[(tuple(barcos), posicion)] = (ataque, puntos)
+				else:
 					self.ataques[(tuple(barcos), posicion)] = (ataque, puntos)
-			else:
-				self.ataques[(tuple(barcos), posicion)] = (ataque, puntos)
 		return self.ataques[(tuple(barcos), posicion)]
+
+	def ataqueEsPosible(self, barcos, board, columna, ataque):
+		for i in range(0, len(barcos)):
+			if barcos[i]<=0 and ataque[i]>0:
+				return False
+		return True
 
 	def atacar(self, barcos, board, columna, ataque):
 		for i in range(0, len(barcos)):
